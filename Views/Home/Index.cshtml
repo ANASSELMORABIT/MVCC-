@@ -1,0 +1,28 @@
+﻿@model ProgramaRafaAnass.Models.API1.Root
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Albums</h1>
+
+@if (Model != null && Model.chart_items != null)
+{
+    <ul>
+        @foreach (var chartItem in Model.chart_items)
+        {
+            var album = chartItem.item;
+            <li>
+                <h2 sty>@album.full_title</h2>
+                <img src="@album.cover_art_thumbnail_url" alt="@album.full_title" style="width:100px;height:100px;" />
+                <p><strong>Fecha de Lanzamiento:</strong> @album.release_date_for_display</p>
+                <p><strong>URL:</strong> <a href="@album.url" target="_blank">@album.url</a></p>
+                <p><strong>Artista:</strong> @album.artist.name</p>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No se encontraron álbumes.</p>
+}

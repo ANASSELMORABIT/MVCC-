@@ -1,0 +1,27 @@
+﻿@model ProgramaRafaAnass.Models.API2.Root
+
+@{
+    ViewData["Title"] = "Privacy";
+}
+
+<h1>Artistas</h1>
+
+@if (Model != null && Model.chart_items != null)
+{
+    <ul>
+        @foreach (var chartItem in Model.chart_items)
+        {
+            var artist = chartItem.item;
+            <li>
+                <h2>@artist.name</h2>
+                <img src="@artist.image_url" alt="@artist.name" style="width:100px;height:100px;" />
+                <p><strong>URL:</strong> <a href="@artist.url" target="_blank">@artist.url</a></p>
+                <p><strong>Verificado:</strong> @(artist.is_verified ? "Sí" : "No")</p>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No se encontraron artistas.</p>
+}
